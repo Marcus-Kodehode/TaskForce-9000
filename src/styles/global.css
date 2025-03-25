@@ -1,44 +1,48 @@
+/* 🎨 Globale variabler definert med CSS custom properties */
 :root {
-    --bg-dark: #0f0f0f;
-    --surface: #1a1a1a;
-    --text-light: #f2f2f2;
-    --text-muted: #999;
-  
-    --gray: #777;
-    --blue: #3498db;
-    --green: #2ecc71;
-    --red: #e74c3c;
-  
-    --radius: 12px;
-    --shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
-    --font: 'Inter', sans-serif;
+  --bg-dark: #0f0f0f;              /* Hovedbakgrunn – mørk */
+  --surface: #1a1a1a;              /* Sekundær bakgrunn – brukt på kort/bokser */
+  --text-light: #f2f2f2;           /* Lys tekstfarge */
+  --text-muted: #999;             /* Avdempet tekst (eks: placeholder) */
+
+  --gray: #777;                    /* Nøytral grå farge */
+  --blue: #3498db;                /* Blå (brukes i f.eks. "påbegynt") */
+  --green: #2ecc71;               /* Grønn (fullført) */
+  --red: #e74c3c;                 /* Rød (advarsler/slett) */
+
+  --radius: 12px;                 /* Standard border-radius */
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.6); /* Myk skygge til komponenter */
+  --font: 'Inter', sans-serif;   /* Skrifttype (må importeres fra Google Fonts) */
+}
+
+/* 🧱 Grunnleggende stil for <body> */
+body {
+  margin: 0;                      /* Fjern default margin */
+  padding: 2rem;                  /* Litt luft rundt innhold */
+  background-color: var(--bg-dark); /* Mørk bakgrunn fra variabel */
+  color: var(--text-light);      /* Lys tekstfarge */
+  font-family: var(--font);      /* Bruk valgt font */
+}
+
+/* ✍️ Overskrifter */
+h1, h2 {
+  text-align: center;            /* Sentrumjustert tekst */
+  color: var(--text-light);      /* Hvit tekstfarge */
+}
+
+/* ✨ Fade-in animasjon når elementer kommer inn i view */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;                   /* Start som usynlig */
+    transform: translateY(10px);  /* Litt lavere på Y-aksen */
   }
-  
-  body {
-    margin: 0;
-    padding: 2rem;
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    font-family: var(--font);
+  100% {
+    opacity: 1;                   /* Fullt synlig */
+    transform: translateY(0);     /* Tilbake til normal posisjon */
   }
-  
-  
-  h1, h2 {
-    text-align: center;
-    color: var(--text-light);
-  }
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .card {
-    animation: fadeInUp 0.4s ease forwards;
-  }
-  
+}
+
+/* 💳 Kortkomponenter (som TaskCard) får fade-in animasjon */
+.card {
+  animation: fadeInUp 0.4s ease forwards; /* Spilles én gang når kortet rendres */
+}

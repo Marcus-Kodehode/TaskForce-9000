@@ -1,61 +1,68 @@
+/* 🧱 Wrapper rundt TaskForm-komponenten */
 .wrapper {
-    background-color: var(--surface);
-    padding: 2rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    margin-bottom: 2rem;
+  background-color: var(--surface);     /* Mørk bakgrunnsfarge (kort-bakgrunn) */
+  padding: 2rem;                        /* Luft inni boksen */
+  border-radius: var(--radius);        /* Runde hjørner */
+  box-shadow: var(--shadow);           /* Skygge for dybdeeffekt */
+  margin-bottom: 2rem;                 /* Avstand under formen */
+}
+
+/* ✨ Hovedtittel / app-navn "TaskForce 9000" */
+.title {
+  font-size: 2.5rem;                   /* Stor skrift */
+  font-weight: 700;                   /* Fet skrift */
+  text-align: center;                 /* Sentrert tekst */
+  background: linear-gradient(90deg, #f83600, #fe8c00); /* Gradient fra rød til oransje */
+  -webkit-background-clip: text;      /* Bruk gradient som tekstfyll */
+  -webkit-text-fill-color: transparent; /* Gjør tekst gjennomsiktig så bakgrunnen vises */
+  animation: glow 2s ease-in-out infinite alternate; /* Glød-animasjon */
+  margin-bottom: 2rem;                /* Avstand under tittelen */
+}
+
+/* ✨ Glød-animasjon for tittel */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fe8c00;    /* Svak glød */
   }
-  
-  .title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    background: linear-gradient(90deg, #f83600, #fe8c00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: glow 2s ease-in-out infinite alternate;
-    margin-bottom: 2rem;
+  to {
+    text-shadow: 0 0 20px #f83600,    /* Sterkere glød */
+                 0 0 30px #f83600;
   }
-  
-  @keyframes glow {
-    from {
-      text-shadow: 0 0 10px #fe8c00;
-    }
-    to {
-      text-shadow: 0 0 20px #f83600, 0 0 30px #f83600;
-    }
-  }
-  
-  input,
-  textarea,
-  select {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #2a2a2a;
-    color: var(--text-light);
-  }
-  
-  input::placeholder,
-  textarea::placeholder {
-    color: #888;
-  }
-  
-  button {
-    background-color: #2ecc71;
-    border: none;
-    padding: 0.75rem;
-    color: #fff;
-    font-weight: bold;
-    width: 100%;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  button:hover {
-    background-color: #27ae60;
-  }
-  
+}
+
+/* ✍️ Inputfelter, textarea og dropdown */
+input,
+textarea,
+select {
+  width: 100%;                        /* Full bredde */
+  padding: 0.75rem;                   /* Innvendig luft */
+  margin-bottom: 1rem;               /* Luft mellom feltene */
+  border: none;                      /* Ingen ramme */
+  border-radius: 8px;                /* Runde hjørner */
+  background-color: #2a2a2a;         /* Mørk bakgrunn */
+  color: var(--text-light);          /* Lys tekst */
+}
+
+/* 💬 Placeholder-tekst i input/textarea */
+input::placeholder,
+textarea::placeholder {
+  color: #888;                       /* Grå og subtil farge */
+}
+
+/* 🟢 Send-knapp (submit) */
+button {
+  background-color: #2ecc71;         /* Grønn bakgrunn */
+  border: none;                      /* Fjern default border */
+  padding: 0.75rem;                  /* Luft rundt innhold */
+  color: #fff;                       /* Hvit tekst */
+  font-weight: bold;                /* Fet tekst */
+  width: 100%;                       /* Full bredde */
+  border-radius: 8px;                /* Runde hjørner */
+  cursor: pointer;                   /* Endre musepeker ved hover */
+  transition: background-color 0.2s ease; /* Smooth overgang */
+}
+
+/* 🟢 Hovereffekt for knapp */
+button:hover {
+  background-color: #27ae60;         /* Mørkere grønn ved hover */
+}

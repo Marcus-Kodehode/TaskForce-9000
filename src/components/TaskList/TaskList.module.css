@@ -1,13 +1,13 @@
 .taskList {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 2rem;
+  display: grid;                     /* 📐 Bruk CSS Grid for layout */
+  grid-template-columns: 1fr;       /* 📱 På små skjermer: én kolonne */
+  gap: 1rem;                         /* 🧱 Avstand (gutter) mellom grid-elementene */
+  margin-top: 2rem;                 /* 🧍 Luft over seksjonen */
+}
+
+/* 🖥️ Når skjermen er minst 768px bred (f.eks. nettbrett eller desktop) */
+@media (min-width: 768px) {
+  .taskList {
+    grid-template-columns: repeat(3, 1fr); /* 🧱 Endre til tre kolonner med like bredder */
   }
-  
-  @media (min-width: 768px) {
-    .taskList {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
+}

@@ -1,60 +1,55 @@
+/* 🧱 Base-stil for hvert TaskCard */
 .card {
-    background-color: var(--surface);
-    border-radius: var(--radius);
-    padding: 1rem;
-    margin-bottom: 0.75rem;
-    box-shadow: var(--shadow);
-    animation: fadeInUp 0.3s ease both;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border-left: 6px solid transparent;
-    color: var(--text-light);
-  }
-  
-  .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-  }
-  
-  .status-not-started {
-    border-left-color: var(--gray);
-  }
-  
-  .status-in-progress {
-    border-left-color: var(--blue);
-    box-shadow: 0 0 0 2px var(--blue);
-  }
-  
-  .status-completed {
-    border-left-color: var(--green);
-    box-shadow: 0 0 10px 1px var(--green);
-  }
-  
-  .title {
-    margin: 0;
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-  
-  .desc {
-    margin-top: 0.4rem;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-  }
-  
-  
-  .status-border {
-    border-left: 5px solid transparent;
-    padding-left: 0.75rem;
-  }
-  
-  /* Fargekode status */
-  .status-not-started {
-    border-left-color: var(--gray);
-  }
-  .status-in-progress {
-    border-left-color: var(--blue);
-  }
-  .status-completed {
-    border-left-color: var(--green);
-  }
-  
+  background-color: var(--surface);           /* Mørk overflate (kortbakgrunn) */
+  border-radius: var(--radius);               /* Runde hjørner */
+  padding: 1rem;                               /* Luft inni kortet */
+  margin-bottom: 0.75rem;                     /* Avstand til neste kort */
+  box-shadow: var(--shadow);                  /* Myk skygge bak kortet */
+  animation: fadeInUp 0.3s ease both;         /* Entry-animasjon */
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover-effekter */
+  border-left: 6px solid transparent;         /* Klar for farget venstrekant */
+  color: var(--text-light);                   /* Hvit tekst */
+}
+
+/* 🎯 Hover-effekt: løfter kortet og gjør skyggen kraftigere */
+.card:hover {
+  transform: translateY(-3px);                /* Løfter kortet litt opp */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);   /* Dypere skygge */
+}
+
+/* 🟠 Ikke påbegynt: grå kant */
+.status-not-started {
+  border-left-color: var(--gray);
+}
+
+/* 🔵 Påbegynt: blå kant + outline */
+.status-in-progress {
+  border-left-color: var(--blue);
+  box-shadow: 0 0 0 2px var(--blue);          /* Blå outline rundt kortet */
+}
+
+/* ✅ Fullført: grønn kant + glow */
+.status-completed {
+  border-left-color: var(--green);
+  box-shadow: 0 0 10px 1px var(--green);      /* Grønn glød */
+}
+
+/* 📝 Tittel på oppgaven */
+.title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;                          /* Litt fetere */
+}
+
+/* 🧾 Beskrivelse under tittelen */
+.desc {
+  margin-top: 0.4rem;
+  color: var(--text-muted);                  /* Lys grå for "sekundær" info */
+  font-size: 0.95rem;
+}
+
+/* ⬅️ Ekstra klasse for å legge til venstregrense + padding (brukes i JSX) */
+.status-border {
+  border-left: 5px solid transparent;
+  padding-left: 0.75rem;
+}

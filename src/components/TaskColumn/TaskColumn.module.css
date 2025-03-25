@@ -1,17 +1,18 @@
+/* 📦 Stil for hver enkelt oppgavekolonne (Ikke påbegynt / I gang / Fullført) */
 .column {
-    background-color: #1c1c1c;
-    padding: 1rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    color: var(--text-light);
-  }
-  
-  h2 {
-    color: var(--text-light);
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    border-bottom: 1px solid #333;
-    padding-bottom: 0.5rem;
-  }
-   
+  background-color: #1c1c1c;          /* Mørk bakgrunnsfarge for å matche dark theme */
+  padding: 1rem;                      /* Luft inni kolonnen */
+  border-radius: var(--radius);       /* Runde hjørner (definert i global :root) */
+  box-shadow: var(--shadow);          /* Skygge for dybdeeffekt */
+  color: var(--text-light);           /* Lys tekst for god kontrast */
+}
+
+/* 🏷️ Stil for overskriften til hver kolonne */
+h2 {
+  color: var(--text-light);           /* Hvit tekst */
+  text-align: center;                 /* Sentrert tekst */
+  margin-bottom: 1rem;                /* Litt luft under overskriften */
+  font-size: 1.2rem;                  /* Litt større enn vanlig tekst */
+  border-bottom: 1px solid #333;      /* Tynn linje under – gir visuell separasjon */
+  padding-bottom: 0.5rem;             /* Luft mellom tekst og linje */
+}
