@@ -1,0 +1,17 @@
+.column {
+    background-color: #1c1c1c;
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    color: var(--text-light);
+  }
+  
+  h2 {
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+  }
+   
