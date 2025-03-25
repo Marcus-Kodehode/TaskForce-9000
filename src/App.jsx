@@ -7,6 +7,8 @@ import TaskList from './components/TaskList/TaskList';
 
 // 🎉 Konfetti-bibliotek for visuell belønning
 import confetti from 'canvas-confetti';
+import CookieWithSteam from './components/Cookie/CookieWithSteam';
+
 
 // 🔐 Nøkkel for å lagre i localStorage
 const STORAGE_KEY = 'todo-tasks-v1';
@@ -140,6 +142,7 @@ function App() {
         >
           Tøm alle oppgaver
         </button>
+        <CookieWithSteam />
       </div>
     </div>
   );
