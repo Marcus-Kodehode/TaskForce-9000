@@ -33,7 +33,10 @@ Du kan legge til oppgaver, dra og slippe dem mellom ulike statuser, og oppleve e
 
 ## 🧠 Hvordan jeg har jobbet
 
-Jeg startet med en enkel JavaScript-versjon og planla en ny versjon med React og Vite.  
+Jeg startet med en enkel JavaScript-versjon og planla en ny versjon med React og Vite.
+
+https://marcus-kodehode.github.io/CRUDProject/
+
 Deretter satte jeg opp en god filstruktur og begynte å bygge komponenter som `TaskForm`, `TaskList`, `TaskColumn` og `TaskCard`.
 
 Stylingen ble gjort med `global.css` for felles stil og `css-modules` for komponent-spesifikke detaljer.  
