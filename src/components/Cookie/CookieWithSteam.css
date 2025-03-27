@@ -1,6 +1,6 @@
 .cookie-container {
-  position: fixed;
-  top: 2.25rem; /* Justert for linje med tittel */
+  position: absolute;
+  top: 0,5rem; /* Justert for linje med tittel */
   right: 1.5rem;
   z-index: 99;
   width: 60px;

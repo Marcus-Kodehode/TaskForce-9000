@@ -1,0 +1,60 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal {
+    background: #111;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #00ffaa;
+    text-align: center;
+    position: relative;
+    min-width: 300px;
+  }
+  
+  .title {
+    color: #00ffaa;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .quote {
+    font-style: italic;
+    color: #ccc;
+  }
+  
+  .counter {
+    text-align: center;
+    color: #00ffaa;
+    margin-top: 1.5rem;
+    font-weight: normal;
+    font-size: 1.1rem;
+  }
+  
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #00cc66;
+    color: white;
+    border: none;
+    border-radius: 0 12px 0 12px;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .close:hover {
+    background: #00e676;
+  }
+  

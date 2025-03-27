@@ -3,50 +3,61 @@ import TaskForm from './components/TaskForm/TaskForm';
 import TaskList from './components/TaskList/TaskList';
 import confetti from 'canvas-confetti';
 import CookieWithSteam from './components/Cookie/CookieWithSteam';
+import RewardModal from './components/Reward/RewardModal';
 import './styles/background.css';
 
-
 const STORAGE_KEY = 'todo-tasks-v1';
+const REWARD_KEY = 'reward-count-v1';
+
+const REWARD_STAGES = [5, 10, 15, 20];
+const QUOTES = [
+  "Small steps every day lead to big results.",
+  "Progress, not perfection.",
+  "You're doing better than you think.",
+  "Keep going – you're unstoppable!",
+];
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [completedCount, setCompletedCount] = useState(0);
+  const [showReward, setShowReward] = useState(false);
+  const [rewardStage, setRewardStage] = useState(0);
 
-  // 🔃 Last inn oppgaver fra localStorage
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
+    const storedTasks = localStorage.getItem(STORAGE_KEY);
+    const storedRewards = localStorage.getItem(REWARD_KEY);
+
+    if (storedTasks) {
       try {
-        const parsed = JSON.parse(stored);
-        const parsedWithTimestamps = parsed.map((task) => ({
+        const parsed = JSON.parse(storedTasks).map((task) => ({
           ...task,
           createdAt: Number(task.createdAt),
         }));
-        setTasks(parsedWithTimestamps);
+        setTasks(parsed);
       } catch (error) {
-        console.error('❌ Kunne ikke parse localStorage-data:', error);
+        console.error('Error parsing tasks:', error);
       }
     }
+
+    if (storedRewards) {
+      setCompletedCount(Number(storedRewards));
+    }
+
     setIsLoaded(true);
   }, []);
 
-  // 💾 Lagre til localStorage
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      localStorage.setItem(REWARD_KEY, completedCount.toString());
     }
-  }, [tasks, isLoaded]);
+  }, [tasks, completedCount, isLoaded]);
 
-  // ➕ Legg til ny oppgave
   const handleAddTask = (newTask) => {
-    const taskWithTimestamp = {
-      ...newTask,
-      createdAt: Date.now(),
-    };
-    setTasks((prev) => [...prev, taskWithTimestamp]);
+    setTasks((prev) => [...prev, { ...newTask, createdAt: Date.now() }]);
   };
 
-  // 🔀 Flytt oppgave til ny status
   const handleMoveTask = (taskId, newStatus) => {
     setTasks((prev) =>
       prev.map((task) =>
@@ -55,51 +66,68 @@ function App() {
     );
   };
 
-  // ✅ Rydd fullførte
   const handleClearCompleted = () => {
-    confetti({
-      particleCount: 120,
-      spread: 80,
-      origin: { y: 0.6 },
-    });
-    const remaining = tasks.filter((task) => task.status !== 'completed');
-    setTasks(remaining);
+    const completed = tasks.filter((task) => task.status === 'completed').length;
+    if (completed === 0) {
+      alert('No completed tasks yet! 💡');
+      return;
+    }
+
+    confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+
+    const newCount = completedCount + completed;
+    const resetCount = newCount >= 20 ? 0 : newCount;
+
+    if (REWARD_STAGES.includes(newCount)) {
+      setRewardStage(newCount / 5);
+      setShowReward(true);
+    }
+
+    setCompletedCount(resetCount);
+    setTasks((prev) => prev.filter((task) => task.status !== 'completed'));
   };
 
-  // ❌ Tøm alt
   const handleClearAll = () => {
-    if (confirm('Er du sikker på at du vil slette alle oppgaver?')) {
+    if (confirm('Are you sure you want to delete all tasks?')) {
       setTasks([]);
     }
   };
 
+  const closeReward = () => setShowReward(false);
+
   return (
     <div>
-      {/* 🔥 Animert sci-fi bakgrunn */}
       <div className="background-anim">
-  {[...Array(60)].map((_, i) => (
-    <div
-      key={i}
-      className="particle"
-      style={{
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 2}s`,
-      }}
-    />
-  ))}
-</div>
+        {[...Array(60)].map((_, i) => (
+          <div
+            key={i}
+            className="particle"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 2}s`,
+            }}
+          />
+        ))}
+      </div>
 
-      {/* 🍪 Cookie med interaksjon */}
       <CookieWithSteam />
-
-      {/* 🧾 Oppgaveform */}
       <TaskForm onAddTask={handleAddTask} />
 
-      {/* 📋 Oppgaveliste */}
+      {/* 🧮 Progress display */}
+      <h3 style={{
+        textAlign: 'center',
+        color: '#00ffaa',
+        marginTop: '0.5rem',
+        marginBottom: '1rem',
+        fontWeight: 'normal',
+        fontSize: '1.1rem',
+      }}>
+        Completed tasks: {completedCount} / 20
+      </h3>
+
       <TaskList tasks={tasks} onMoveTask={handleMoveTask} />
 
-      {/* 🧹 Kontrollknapper */}
       <div
         style={{
           display: 'flex',
@@ -119,7 +147,7 @@ function App() {
             cursor: 'pointer',
           }}
         >
-          Rydd fullførte oppgaver
+          Clear completed tasks
         </button>
 
         <button
@@ -134,9 +162,18 @@ function App() {
             cursor: 'pointer',
           }}
         >
-          Tøm alle oppgaver
+          Delete all tasks
         </button>
       </div>
+
+      {showReward && (
+        <RewardModal
+          message={`Congratulations on ${REWARD_STAGES[rewardStage - 1]} tasks!`}
+          quote={QUOTES[rewardStage - 1]}
+          completedCount={completedCount}
+          onClose={closeReward}
+        />
+      )}
     </div>
   );
 }
