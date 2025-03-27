@@ -76,6 +76,8 @@ src/ ├── components/ │ ├── TaskForm/ │ ├── TaskList/ │ �
 
 ## 📸 Live Preview
 
+  Her ser du versjon 1 av ''task-manageren'' min.
+
 🛰️ [Se appen live her](https://marcus-kodehode.github.io/CRUDProject/)
 
 ---
