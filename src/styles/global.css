@@ -17,11 +17,11 @@
 
 /* 🧱 Grunnleggende stil for <body> */
 body {
-  margin: 0;                      /* Fjern default margin */
-  padding: 2rem;                  /* Litt luft rundt innhold */
-  background-color: var(--bg-dark); /* Mørk bakgrunn fra variabel */
-  color: var(--text-light);      /* Lys tekstfarge */
-  font-family: var(--font);      /* Bruk valgt font */
+  margin: 0;
+  padding: 2rem;
+  background-color: transparent; /* 👻 Lar animasjonen skinne gjennom */
+  color: var(--text-light);
+  font-family: var(--font);
 }
 
 /* ✍️ Overskrifter */

@@ -1,54 +1,39 @@
-// 🔧 React hooks for tilstand og sideeffekter
 import { useState, useEffect } from 'react';
-
-// 🧩 Komponenter for inputskjema og oppgaveliste
 import TaskForm from './components/TaskForm/TaskForm';
 import TaskList from './components/TaskList/TaskList';
-
-// 🎉 Konfetti-bibliotek for visuell belønning
 import confetti from 'canvas-confetti';
 import CookieWithSteam from './components/Cookie/CookieWithSteam';
+import './styles/background.css';
 
 
-// 🔐 Nøkkel for å lagre i localStorage
 const STORAGE_KEY = 'todo-tasks-v1';
 
 function App() {
-  // 🧠 tasks: inneholder alle oppgavene
-  // isLoaded: brukes for å forhindre at localStorage skrives før første load
   const [tasks, setTasks] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // 🔁 useEffect – kjøres én gang ved oppstart for å hente oppgaver fra localStorage
+  // 🔃 Last inn oppgaver fra localStorage
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       try {
-        // 🔄 Parser JSON-string til JS-objekt
         const parsed = JSON.parse(stored);
-
-        // 🕒 Sørger for at createdAt fortsatt er et tall
         const parsedWithTimestamps = parsed.map((task) => ({
           ...task,
           createdAt: Number(task.createdAt),
         }));
-
-        setTasks(parsedWithTimestamps); // 🔁 Oppdaterer state med lagrede oppgaver
-        console.log('📥 Tasks fra lagring:', parsedWithTimestamps);
+        setTasks(parsedWithTimestamps);
       } catch (error) {
         console.error('❌ Kunne ikke parse localStorage-data:', error);
       }
     }
-
-    // ✅ Markerer at init-loading er ferdig
     setIsLoaded(true);
   }, []);
 
-  // 💾 Lagre oppgaver til localStorage hver gang tasks endres – men ikke før init-load
+  // 💾 Lagre til localStorage
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-      console.log('💾 Lagret tasks til localStorage:', tasks);
     }
   }, [tasks, isLoaded]);
 
@@ -56,54 +41,65 @@ function App() {
   const handleAddTask = (newTask) => {
     const taskWithTimestamp = {
       ...newTask,
-      createdAt: Date.now(), // 🕒 Legger til timestamp
+      createdAt: Date.now(),
     };
-
-    // 🔼 Oppdaterer state med ny oppgave
     setTasks((prev) => [...prev, taskWithTimestamp]);
   };
 
-  // 🔁 Flytter en oppgave til ny status (brukes med drag and drop)
+  // 🔀 Flytt oppgave til ny status
   const handleMoveTask = (taskId, newStatus) => {
     setTasks((prev) =>
       prev.map((task) =>
-        task.id.toString() === taskId
-          ? { ...task, status: newStatus }
-          : task
+        task.id.toString() === taskId ? { ...task, status: newStatus } : task
       )
     );
   };
 
-  // ✅ Rydder alle oppgaver med status "completed"
+  // ✅ Rydd fullførte
   const handleClearCompleted = () => {
-    // 🎉 Skyter konfetti
     confetti({
       particleCount: 120,
       spread: 80,
       origin: { y: 0.6 },
     });
-
-    // 🔁 Filtrerer vekk fullførte oppgaver
     const remaining = tasks.filter((task) => task.status !== 'completed');
     setTasks(remaining);
   };
 
-  // ❌ Fjerner alle oppgaver etter bekreftelse
+  // ❌ Tøm alt
   const handleClearAll = () => {
     if (confirm('Er du sikker på at du vil slette alle oppgaver?')) {
-      setTasks([]); // 🚫 Tømmer listen
+      setTasks([]);
     }
   };
 
   return (
     <div>
-      {/* 🧾 Inputskjema for ny oppgave */}
+      {/* 🔥 Animert sci-fi bakgrunn */}
+      <div className="background-anim">
+  {[...Array(60)].map((_, i) => (
+    <div
+      key={i}
+      className="particle"
+      style={{
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 2}s`,
+      }}
+    />
+  ))}
+</div>
+
+      {/* 🍪 Cookie med interaksjon */}
+      <CookieWithSteam />
+
+      {/* 🧾 Oppgaveform */}
       <TaskForm onAddTask={handleAddTask} />
 
-      {/* 📋 Oppgaveliste med drag-and-drop */}
+      {/* 📋 Oppgaveliste */}
       <TaskList tasks={tasks} onMoveTask={handleMoveTask} />
 
-      {/* 🧹 Rydd / Tøm-knapper */}
+      {/* 🧹 Kontrollknapper */}
       <div
         style={{
           display: 'flex',
@@ -112,7 +108,6 @@ function App() {
           marginTop: '2rem',
         }}
       >
-        {/* Rydd fullførte */}
         <button
           onClick={handleClearCompleted}
           style={{
@@ -127,7 +122,6 @@ function App() {
           Rydd fullførte oppgaver
         </button>
 
-        {/* Tøm alle */}
         <button
           onClick={handleClearAll}
           style={{
@@ -142,7 +136,6 @@ function App() {
         >
           Tøm alle oppgaver
         </button>
-        <CookieWithSteam />
       </div>
     </div>
   );

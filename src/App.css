@@ -1,42 +1,68 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* 🌌 Sci-fi animert bakgrunn */
+.background-anim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #0b0f0c, #001f0f, #003311);
+  background-size: 400% 400%;
+  animation: bg-move 12s ease-in-out infinite;
+  filter: brightness(1.3) contrast(1.2);
+  pointer-events: none;
+  opacity: 0.9;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+/* 🌠 Partikler med sterk neon */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #00faff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #00faff, 0 0 24px #00faff55;
+  animation: flicker 3s infinite ease-in-out alternate;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes flicker {
+  0% {
+    opacity: 0.3;
+    transform: translateY(0) scale(1);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 1;
+    transform: translateY(-12px) scale(1.3);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* 🌀 Bakgrunnsbevegelse */
+@keyframes bg-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/* 🕸️ Hologram-nett */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.4;
 }
