@@ -87,6 +87,11 @@ src/ ├── components/ │ ├── TaskForm/ │ ├── TaskList/ │ �
 **Marcus @ Kodehode**  
 _"Med lidenskap for mørke grensesnitt, glow-effekter og produktivitet med stil."_
 
+// 💍 One bug to find them,
+// 🔥 One fix to bring them all,
+// 💡 And in the darkness bind them.
+
+
 ---
 
 ## 📄 Lisens
