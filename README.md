@@ -1,103 +1,124 @@
-# 🚀 TaskForce 9000
+<p align="center">
+  <img src="src/assets/logo.png" alt="TaskForce 9000 Logo" width="200"/>
+</p>
 
-**TaskForce 9000** er en futuristisk, mørk og glødende gjøremålsapp laget med React og Vite.  
-Appen kombinerer funksjonell produktivitet med et stilrent, sci-fi-inspirert brukergrensesnitt.
+# 🚀 TaskForce 9000 – Futuristisk gjøremålsapp med sci-fi glow
 
-Du kan legge til oppgaver, dra og slippe dem mellom ulike statuser, og oppleve en belønningsmekanikk når du rydder unna!
-
----
-
-## 🔧 Funksjoner
-
-- ✅ Legg til nye oppgaver med tittel, beskrivelse og status
-- 📦 Tre kolonner for statuser: **Not started**, **In progress** og **Completed**
-- 🎯 Dra og slipp oppgaver mellom kolonner med full støtte fra `@hello-pangea/dnd`
-- 💾 Automatisk lagring i `localStorage` – husker oppgavene dine mellom økter
-- 🎉 Rydd fullførte oppgaver med konfettianimasjon og belønningssystem
-- 💣 Tøm alle oppgaver med ett klikk (med bekreftelse)
-- 🌒 Moderne mørk design med neon-elementer og animert bakgrunn
-- 🍪 Interaktiv cookie – klikkbar og dampende!
-- 🌟 Belønningssystem med popup for hver 5. oppgave (opp til 20), inkludert:
-  - Motiverende quote
-  - Fullføringsindikator: **"Completed tasks: X / 20"**
-  - Automatisk reset etter 20 oppgaver
-- 🧠 Full støtte for engelskspråklig brukergrensesnitt
-- ✨ Bakgrunn med animerte partikler og glow-effekt
+Velkommen til **TaskForce 9000** – en mørk, glødende og interaktiv gjøremålsapp bygget med React og Vite. Appen kombinerer produktivitet med stil og sci-fi-estetikk.
 
 ---
 
-## 🧪 Teknologi brukt
+## 🌌 Hva er dette prosjektet?
 
-- ⚛️ React 19
-- ⚡ Vite
-- 🎨 CSS Modules
-- 🧲 @hello-pangea/dnd – drag and drop
-- 🎊 canvas-confetti – konfettianimasjon
-- 💽 localStorage
-- ✍️ HTML/CSS + en solid dose neon
+Dette prosjektet er laget som en del av min frontend-læringsreise, hvor jeg ønsket å utforske React kombinert med interaktiv UI og gamification. Du kan organisere oppgaver, dra og slippe dem, og bli belønnet med konfetti og motiverende quotes!
 
 ---
 
-## 🧠 Hvordan jeg har jobbet
+## 🚀 Kom i gang
 
-Jeg startet med en enkel JavaScript-versjon og planla en ny versjon med React og Vite.  
-Deretter satte jeg opp en god og skalerbar filstruktur og bygde komponentene:
+### 1. Klon prosjektet
 
-- `TaskForm` – for å legge til oppgaver
-- `TaskList` – for å vise og organisere oppgaver
-- `TaskColumn` – én kolonne per status
-- `TaskCard` – hvert enkelt oppgavekort
+```bash
+git clone https://github.com/ditt-brukernavn/taskforce9000.git
+cd taskforce9000
+```
 
-Stylingen er gjort med `global.css` for felles stil og `CSS Modules` for komponentspesifikke detaljer.
+### 2. Installer avhengigheter
 
-Jeg implementerte `localStorage` slik at appen husker data, og etter hvert la jeg inn dra-og-slipp med `@hello-pangea/dnd`.  
-Til slutt la jeg til belønning, interaktiv cookie og en sci-fi-animasjon for å gi appen en særegen følelse.
+```bash
+npm install
+```
 
----
+### 3. Start utviklingsserver
 
-## 🧱 Prosjektstruktur
-src/ ├── components/ │ ├── TaskForm/ │ ├── TaskList/ │ ├── TaskColumn/ │ ├── TaskCard/ │ ├── Cookie/ │ └── Reward/ ├── styles/ │ ├── global.css │ └── background.css ├── App.jsx ├── main.jsx
-
----
-
+```bash
+npm run dev
+```
 
 ---
 
-## 📈 Neste steg
+## 🛠️ Teknologier brukt
 
-- 🔁 Fremdriftsindikator og visuell progressbar
-- 🧠 Mulighet for å sette deadlines/dato og sortere på tid
-- 🗓️ Ukesvisning eller filter for "I dag", "Denne uka", "Senere"
-- 🔐 Brukerinnlogging og backend-lagring
-- 🌌 Flere bakgrunnseffekter: grid, nebulas, bevegelse
-- 🎮 Gamification-elementer og avatar
-
----
-
-## 📸 Live Preview
-
-  Her ser du versjon 1 av ''task-manageren'' min.
-
-🛰️ [Se appen live her](https://marcus-kodehode.github.io/CRUDProject/)
+- **React 19**
+- **Vite**
+- **CSS Modules**
+- **@hello-pangea/dnd** – dra-og-slipp
+- **canvas-confetti** – konfettianimasjon
+- **localStorage**
+- **HTML/CSS** – og en god dose neon ✨
 
 ---
 
-## ✍️ Laget av
+## 🗂️ Prosjektstruktur
 
-**Marcus @ Kodehode**  
-_"Med lidenskap for mørke grensesnitt, glow-effekter og produktivitet med stil."_
-
-// 💍 One bug to find them,
-// 🔥 One fix to bring them all,
-// 💡 And in the darkness bind them.
-
+```
+taskforce9000/
+├── public/             
+├── src/
+│   ├── components/
+│   │   ├── TaskForm/
+│   │   ├── TaskList/
+│   │   ├── TaskColumn/
+│   │   ├── TaskCard/
+│   │   ├── Cookie/
+│   │   └── Reward/
+│   ├── styles/
+│   │   ├── global.css
+│   │   └── background.css
+│   ├── App.jsx
+│   └── main.jsx
+├── index.html
+├── package.json
+└── vite.config.js
+```
 
 ---
 
-## 📄 Lisens
+## 📸 Eksempel på appen
 
-Dette prosjektet er laget for læring og kreativ utfoldelse.  
-Bruk gjerne koden, remix den, og gjør den til din egen!
+<p align="center">
+  <img src="src/assets/skjermbilde-taskforce.png" alt="TaskForce9000 Skjermbilde" width="400"/>
+</p>
 
+---
 
-> ![TaskForce9000 Preview](./src/assets/images/taskforce-9000.webp)
+## ✨ Funksjoner
+
+- ✅ Legg til oppgaver med tittel og status
+- 📦 Dra og slipp mellom kolonner
+- 🎯 Status: Not started, In progress, Completed
+- 💾 Automatisk lagring med localStorage
+- 🎉 Belønningssystem og konfetti
+- 💣 Slett alt med ett klikk
+- 🍪 Interaktiv cookie med damp
+- 🌌 Glow-effekter og partikkelbakgrunn
+
+---
+
+## 🧠 Videre utvikling
+
+Planer for fremtiden:
+- Fremdriftsindikator og visuell progressbar
+- Mulighet for deadlines og sortering
+- Ukesvisning og filtre
+- Brukerinnlogging og backend
+- Flere animasjoner og sci-fi-elementer
+- Gamification og avatarer
+
+---
+
+## ✍️ Signatur
+
+```
+//  One bug to find them,
+//  One fix to bring them all,
+//  And in the darkness bind them.
+```
+
+---
+
+## 📬 Kontakt
+
+Har du forslag eller vil bidra? Åpne en issue eller send en pull request via GitHub!
+
+---
